@@ -2,42 +2,6 @@
 	"entries" : 
 	[
 		{
-			"name" : "5_lab_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/media/sf_VM_EXCHANGE/system_programming/6_lab/cmake-build-debug"
-		},
-		{
-			"name" : "5_lab_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "5_lab_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/media/sf_VM_EXCHANGE/system_programming/6_lab"
-		},
-		{
 			"name" : "6_lab_BINARY_DIR",
 			"properties" : 
 			[
@@ -47,7 +11,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/media/sf_VM_EXCHANGE/system_programming/6_lab/cmake-build-debug"
+			"value" : "/media/sf_VM_EXCHANGE/system_programming/7_lab/cmake-build-debug"
 		},
 		{
 			"name" : "6_lab_IS_TOP_LEVEL",
@@ -71,7 +35,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/media/sf_VM_EXCHANGE/system_programming/6_lab"
+			"value" : "/media/sf_VM_EXCHANGE/system_programming/7_lab"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -127,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/media/sf_VM_EXCHANGE/system_programming/6_lab/cmake-build-debug"
+			"value" : "/media/sf_VM_EXCHANGE/system_programming/7_lab/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -487,7 +451,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/media/sf_VM_EXCHANGE/system_programming/6_lab/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/media/sf_VM_EXCHANGE/system_programming/7_lab/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -547,7 +511,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/media/sf_VM_EXCHANGE/system_programming/6_lab"
+			"value" : "/media/sf_VM_EXCHANGE/system_programming/7_lab"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",

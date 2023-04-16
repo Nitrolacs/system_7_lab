@@ -6,6 +6,18 @@
 
 #include "interface.h"
 
+void PrintClientHelp(void)
+{
+    printf("Использование: ./client [опции] коэффициенты\n");
+    printf("Опции:\n");
+    printf("-h \t\tВывести эту справку и выйти\n");
+    printf("-l logFile\tЗадать имя файла для логирования\n");
+    printf("-t timeout\tЗадать таймаут для ожидания ответа\n");
+    printf("Коэффициенты:\n");
+    printf("a b c\t\tКоэффициенты квадратного уравнения\n");
+    printf("a b c d\t\tКоэффициенты кубического уравнения\n");
+}
+
 // Функция для обработки аргументов из командной строки для клиента
 int
 ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
@@ -13,12 +25,28 @@ ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
                 double *b, double *c,
                 double *d)
                 {
+
+    // Проверяем, что стандартный ввод и вывод являются терминалами
+    if (!isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO))
+    {
+        fprintf(stderr, "Перенаправление стандартных потоков запрещено.\n");
+        return -1;
+    }
+    
     // Объявляем переменную для хранения кода возврата функции getopt
     int opt;
 
     // Проверяем количество аргументов командной строки
     // Проверяем, что аргументов 7, 9, 11, 13
-    if (argc != 7 && argc != 9 && argc != 11 && argc != 13)
+
+    if (argc == 1)
+    {
+        PrintClientHelp();
+        exit(0);
+    }
+
+    if (argc != 2 && argc != 7 && argc != 8 && argc != 9 && argc != 10
+    && argc != 11 && argc != 12 && argc != 13 && argc != 14)
     {
         fprintf(stderr,
                 "Использование: ./client [-l logFile] [-t timeout] "
@@ -37,23 +65,68 @@ ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
     int bFlag = 0;
     int cFlag = 0;
     int dFlag = 0;
+    int lFlag = 0;
+    int tFlag = 0;
+    int hFlag = 0;
 
     // Используем цикл while для анализа аргументов командной строки
     //  strtod() преобразует строку в число с плавающей точкой и возвращает
     //  указатель на первый символ, который не является частью числа.
     //  Если этот символ не равен нулевому символу ‘\0’, то это означает,
     //  что строка содержит неверный формат числа.
-    while ((opt = getopt(argc, argv, "a:b:c:d:t:l:")) != -1)
+    while ((opt = getopt(argc, argv, "a:b:c:d:t:l:h")) != -1)
     {
         switch (opt)
         {
             case 'l':
+                // Проверяем флаг l
+                if (lFlag == 1)
+                {
+                    // Опция l повторяется
+                    fprintf(stderr,
+                            "Опция -l не может быть указана более одного раза.\n");
+                    return -1;
+                }
+                else
+                {
+                    // Опция l встречается в первый раз
+                    lFlag = 1; // Устанавливаем флаг a в 1
+                }
                 // Имя файла журнала
                 *logFile = optarg;
                 break;
             case 't':
+                // Проверяем флаг t
+                if (tFlag == 1)
+                {
+                    // Опция t повторяется
+                    fprintf(stderr,
+                            "Опция -t не может быть указана более одного раза.\n");
+                    return -1;
+                }
+                else
+                {
+                    // Опция t встречается в первый раз
+                    tFlag = 1; // Устанавливаем флаг t в 1
+                }
                 // Время ожидания ввода пользователя
                 *timeout = atoi(optarg);
+                break;
+            case 'h':
+                // Проверяем флаг a
+                if (hFlag == 1)
+                {
+                    // Опция a повторяется
+                    fprintf(stderr,
+                            "Опция -h не может быть указана более одного раза.\n");
+                    return -1;
+                }
+                else
+                {
+                    // Опция h встречается в первый раз
+                    hFlag = 1; // Устанавливаем флаг h в 1
+                }
+                PrintClientHelp();
                 break;
             case 'a':
                 // Проверяем флаг a
