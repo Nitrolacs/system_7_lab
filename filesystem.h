@@ -14,6 +14,6 @@
  * \param[in] serverName Файл с сервером
  * \return Код завершения
  */
-void CheckUniqueServer();
+int CheckDiskFull();
 
 #endif //INC_6_LAB_FILESYSTEM_H

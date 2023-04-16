@@ -5,6 +5,7 @@
 #include <unistd.h>
 
 #include "interface.h"
+#include "filesystem.h"
 
 void PrintClientHelp(void)
 {
@@ -13,6 +14,8 @@ void PrintClientHelp(void)
     printf("-h \t\tВывести эту справку и выйти\n");
     printf("-l logFile\tЗадать имя файла для логирования\n");
     printf("-t timeout\tЗадать таймаут для ожидания ответа\n");
+    printf("-f filesystem\tПроверка заполнения \"дисков\", на которых"
+           " хранятся log-файлы\n");
     printf("Коэффициенты:\n");
     printf("a b c\t\tКоэффициенты квадратного уравнения\n");
     printf("a b c d\t\tКоэффициенты кубического уравнения\n");
@@ -25,6 +28,8 @@ void PrintServerHelp(void)
     printf("-h \t\tВывести эту справку и выйти\n");
     printf("-l logFile\tЗадать имя файла для логирования\n");
     printf("-t timeout\tЗадать таймаут для ожидания ответа\n");
+    printf("-f filesystem\tПроверка заполнения \"дисков\", на которых"
+           " хранятся log-файлы\n");
 }
 
 // Функция для обработки аргументов из командной строки для клиента
@@ -53,15 +58,6 @@ ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
         exit(0);
     }
 
-    if (argc != 2 && argc != 7 && argc != 8 && argc != 9 && argc != 10
-    && argc != 11 && argc != 12 && argc != 13 && argc != 14)
-    {
-        fprintf(stderr,
-                "Использование: ./client [-l logFile] [-t timeout] "
-                "-a a -b b -c c [-d d]\n");
-        return -1;
-    }
-
     // Объявляем указатели на конец чисел
     char* endptrA;
     char* endptrB;
@@ -76,13 +72,14 @@ ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
     int lFlag = 0;
     int tFlag = 0;
     int hFlag = 0;
+    int fFlag = 0;
 
     // Используем цикл while для анализа аргументов командной строки
     //  strtod() преобразует строку в число с плавающей точкой и возвращает
     //  указатель на первый символ, который не является частью числа.
     //  Если этот символ не равен нулевому символу ‘\0’, то это означает,
     //  что строка содержит неверный формат числа.
-    while ((opt = getopt(argc, argv, "a:b:c:d:t:l:h")) != -1)
+    while ((opt = getopt(argc, argv, "a:b:c:d:t:l:hf")) != -1)
     {
         switch (opt)
         {
@@ -121,7 +118,7 @@ ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
                 *timeout = atoi(optarg);
                 break;
             case 'h':
-                // Проверяем флаг a
+                // Проверяем флаг h
                 if (hFlag == 1)
                 {
                     // Опция a повторяется
@@ -135,6 +132,22 @@ ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
                     hFlag = 1; // Устанавливаем флаг h в 1
                 }
                 PrintClientHelp();
+                break;
+            case 'f':
+                // Проверяем флаг f
+                if (fFlag == 1)
+                {
+                    // Опция a повторяется
+                    fprintf(stderr,
+                            "Опция -f не может быть указана более одного раза.\n");
+                    return -1;
+                }
+                else
+                {
+                    // Опция f встречается в первый раз
+                    fFlag = 1; // Устанавливаем флаг f в 1
+                }
+                CheckDiskFull();
                 break;
             case 'a':
                 // Проверяем флаг a
@@ -271,7 +284,7 @@ void parseArgsServer(int argc, char* argv[], char** logFile, int* timeout)
     int opt;
 
     // Опции для getopt
-    const char* optstring = "l:t:h";
+    const char* optstring = "l:t:hf";
     // Парсим аргументы с помощью getopt
     while ((opt = getopt(argc, argv, optstring)) != -1)
     {
@@ -284,6 +297,9 @@ void parseArgsServer(int argc, char* argv[], char** logFile, int* timeout)
                 break;
             case 'h':
                 PrintServerHelp();
+                break;
+            case 'f':
+                CheckDiskFull();
                 break;
             default: // неверный аргумент
                 fprintf(stderr,

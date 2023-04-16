@@ -12,7 +12,6 @@
 #include "logic.h"
 #include "interface.h"
 #include "signals.h"
-#include "filesystem.h"
 
 #define PORT 5555
 #define MAXBUF 1024
@@ -58,7 +57,8 @@ int main(int argc, char* argv[])
     if (bind(sockfd, (struct sockaddr *) &servaddr,
             sizeof servaddr) == -1)
     {
-        printf("Уже запущен экземпляр процесса-сервера\n");
+        printf("Уже был запущен экземпляр процесса-сервера. "
+               "Выход...\n");
         exit(1);
     }
 
