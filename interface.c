@@ -46,7 +46,6 @@ ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
     int opt;
 
     // Проверяем количество аргументов командной строки
-    // Проверяем, что аргументов 7, 9, 11, 13
 
     if (argc == 1)
     {
@@ -270,11 +269,6 @@ void parseArgsServer(int argc, char* argv[], char** logFile, int* timeout)
     }
 
     int opt;
-
-    if (argc == 1)
-    {
-        PrintServerHelp();
-    }
 
     // Опции для getopt
     const char* optstring = "l:t:h";

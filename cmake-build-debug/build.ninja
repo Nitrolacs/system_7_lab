@@ -79,6 +79,12 @@ build CMakeFiles/6_lab.dir/signals.c.o: C_COMPILER__6_lab_Debug /media/sf_VM_EXC
   OBJECT_DIR = CMakeFiles/6_lab.dir
   OBJECT_FILE_DIR = CMakeFiles/6_lab.dir
 
+build CMakeFiles/6_lab.dir/filesystem.c.o: C_COMPILER__6_lab_Debug /media/sf_VM_EXCHANGE/system_programming/7_lab/filesystem.c || cmake_object_order_depends_target_6_lab
+  DEP_FILE = CMakeFiles/6_lab.dir/filesystem.c.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu99
+  OBJECT_DIR = CMakeFiles/6_lab.dir
+  OBJECT_FILE_DIR = CMakeFiles/6_lab.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target 6_lab
@@ -87,7 +93,7 @@ build CMakeFiles/6_lab.dir/signals.c.o: C_COMPILER__6_lab_Debug /media/sf_VM_EXC
 #############################################
 # Link the executable 6_lab
 
-build 6_lab: C_EXECUTABLE_LINKER__6_lab_Debug CMakeFiles/6_lab.dir/server.c.o CMakeFiles/6_lab.dir/client.c.o CMakeFiles/6_lab.dir/interface.c.o CMakeFiles/6_lab.dir/logic.c.o CMakeFiles/6_lab.dir/signals.c.o
+build 6_lab: C_EXECUTABLE_LINKER__6_lab_Debug CMakeFiles/6_lab.dir/server.c.o CMakeFiles/6_lab.dir/client.c.o CMakeFiles/6_lab.dir/interface.c.o CMakeFiles/6_lab.dir/logic.c.o CMakeFiles/6_lab.dir/signals.c.o CMakeFiles/6_lab.dir/filesystem.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/6_lab.dir
   POST_BUILD = :

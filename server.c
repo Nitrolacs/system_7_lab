@@ -12,6 +12,7 @@
 #include "logic.h"
 #include "interface.h"
 #include "signals.h"
+#include "filesystem.h"
 
 #define PORT 5555
 #define MAXBUF 1024
@@ -57,9 +58,10 @@ int main(int argc, char* argv[])
     if (bind(sockfd, (struct sockaddr *) &servaddr,
             sizeof servaddr) == -1)
     {
-        perror("bind");
+        printf("Уже запущен экземпляр процесса-сервера\n");
         exit(1);
     }
+
 
     // Выводим информацию о сервере на экран и в файл журнала
     printf("Сервер слушает на %s:%d\n",
@@ -75,6 +77,7 @@ int main(int argc, char* argv[])
     // Входим в бесконечный цикл обработки запросов от клиентов
     while (1)
     {
+
         // Устанавливаем таймер неактивности клиентской стороны
         setTimer(timeout);
 

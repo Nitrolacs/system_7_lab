@@ -6,6 +6,7 @@
 #include <time.h>
 #include <stdarg.h>
 
+#include "filesystem.h"
 #include "signals.h"
 
 FILE* logfd; // имя файла журнала
