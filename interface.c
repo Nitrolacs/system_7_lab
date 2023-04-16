@@ -18,6 +18,15 @@ void PrintClientHelp(void)
     printf("a b c d\t\tКоэффициенты кубического уравнения\n");
 }
 
+void PrintServerHelp(void)
+{
+    printf("Использование: ./server [опции]\n");
+    printf("Опции:\n");
+    printf("-h \t\tВывести эту справку и выйти\n");
+    printf("-l logFile\tЗадать имя файла для логирования\n");
+    printf("-t timeout\tЗадать таймаут для ожидания ответа\n");
+}
+
 // Функция для обработки аргументов из командной строки для клиента
 int
 ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
@@ -253,9 +262,22 @@ ParseArgsClient(int argc, char *argv[], char **logFile, int *timeout,
 // Функция для разбора аргументов командной строки сервера
 void parseArgsServer(int argc, char* argv[], char** logFile, int* timeout)
 {
+    // Проверяем, что стандартный ввод и вывод являются терминалами
+    if (!isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO))
+    {
+        fprintf(stderr, "Перенаправление стандартных потоков запрещено.\n");
+        exit(1);
+    }
+
     int opt;
+
+    if (argc == 1)
+    {
+        PrintServerHelp();
+    }
+
     // Опции для getopt
-    const char* optstring = "l:t:";
+    const char* optstring = "l:t:h";
     // Парсим аргументы с помощью getopt
     while ((opt = getopt(argc, argv, optstring)) != -1)
     {
@@ -265,6 +287,9 @@ void parseArgsServer(int argc, char* argv[], char** logFile, int* timeout)
                 break;
             case 't': // время ожидания сообщений от клиента
                 *timeout = atoi(optarg);
+                break;
+            case 'h':
+                PrintServerHelp();
                 break;
             default: // неверный аргумент
                 fprintf(stderr,
