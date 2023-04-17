@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['openlog_0',['openLog',['../signals_8h.html#ac2b252f73db460a4c393f7bc26c375c2',1,'signals.c']]]
+  ['main_0',['main',['../client_8h.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;client.c'],['../server_8h.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;client.c']]]
 ];

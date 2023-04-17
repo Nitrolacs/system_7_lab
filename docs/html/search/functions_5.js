@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writelog_0',['writeLog',['../signals_8h.html#a4a910c2b977b8cfa71448e92c5ee8d46',1,'signals.c']]]
+  ['timeouthandler_0',['timeoutHandler',['../signals_8h.html#a115b5c90b59f7381736dbdd60c2cb2ff',1,'signals.c']]]
 ];

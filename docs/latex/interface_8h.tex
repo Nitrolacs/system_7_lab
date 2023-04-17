@@ -8,6 +8,11 @@
 \doxysubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{interface_8h_a653bb6fcebf5ec0f438c7c14b5b61c73}{Print\+Client\+Help}} (void)
+\begin{DoxyCompactList}\small\item\em Выводит справку об использовании клиента. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{interface_8h_ac300f0ec5d190d3eebe418b08e22ba5a}\label{interface_8h_ac300f0ec5d190d3eebe418b08e22ba5a}} 
+void {\bfseries Print\+Server\+Help} (void)
+\begin{DoxyCompactList}\small\item\em Выводит справку об использовании сервера. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{interface_8h_a2fca57bc6a1a55b602f1516e95e0fcdd}{Parse\+Args\+Client}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, char $\ast$$\ast$log\+File, int $\ast$timeout, double $\ast$a, double $\ast$b, double $\ast$c, double $\ast$d)
 \begin{DoxyCompactList}\small\item\em Разбирает аргументы командной строки \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{interface_8h_a245b690e0319f33100bf5cc74967247b}{parse\+Args\+Server}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, char $\ast$$\ast$log\+File, int $\ast$timeout)
@@ -50,9 +55,9 @@ void \mbox{\hyperlink{interface_8h_a245b690e0319f33100bf5cc74967247b}{parse\+Arg
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
-Код ошибки
+Код ошибки 
 \end{DoxyReturn}
-Функции интерфейса CLI \mbox{\Hypertarget{interface_8h_a245b690e0319f33100bf5cc74967247b}\label{interface_8h_a245b690e0319f33100bf5cc74967247b}} 
+\mbox{\Hypertarget{interface_8h_a245b690e0319f33100bf5cc74967247b}\label{interface_8h_a245b690e0319f33100bf5cc74967247b}} 
 \index{interface.h@{interface.h}!parseArgsServer@{parseArgsServer}}
 \index{parseArgsServer@{parseArgsServer}!interface.h@{interface.h}}
 \doxysubsubsection{\texorpdfstring{parseArgsServer()}{parseArgsServer()}}
@@ -73,3 +78,14 @@ void \mbox{\hyperlink{interface_8h_a245b690e0319f33100bf5cc74967247b}{parse\+Arg
 \mbox{\texttt{ in}}  & {\em log\+File} & Указатель на время ожидания \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{interface_8h_a653bb6fcebf5ec0f438c7c14b5b61c73}\label{interface_8h_a653bb6fcebf5ec0f438c7c14b5b61c73}} 
+\index{interface.h@{interface.h}!PrintClientHelp@{PrintClientHelp}}
+\index{PrintClientHelp@{PrintClientHelp}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{PrintClientHelp()}{PrintClientHelp()}}
+{\footnotesize\ttfamily void Print\+Client\+Help (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Выводит справку об использовании клиента. 
+
+Функции интерфейса CLI 
